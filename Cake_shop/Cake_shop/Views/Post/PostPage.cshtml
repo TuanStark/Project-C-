@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Cake_shop.Models.EF.Post>
+@{
+    ViewBag.Title = "PostPage";
+    Layout = null;
+}
+
+
+    <div class="section__content-title">
+        <div class="section__content-title-img">
+            <img src="https://codengon.vn/banhngot/wp-content/uploads/2022/09/index-blog-2-icon.webp"
+                 alt="">
+        </div>
+        <h3 class="section__content-title-name">CÔNG THỨC LÀM BÁNH</h3>
+    </div>
+    @if (Model != null && Model.Any())
+    {
+        foreach (var item in Model)
+        {
+            <a href="@Url.Action("PostDetail","Post" , new { @id = item.id })" class="section__news-link">
+                <ul class="section__news-list">
+                    <li class="section__news-items">
+                        <div class="section__news-img">
+                            <img width="500px" height="200px"
+                                 src="@item.image"
+                                 alt="">
+                        </div>
+                        <div class="section__news-text" style="width:530px">
+                            <h5 class="section__news-heading">
+                                @item.title
+                            </h5>
+                            <div class="section__news-date">@item.createDate.ToString()</div>
+                            <p class="section__news-note">
+                                @item.description
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </a>
+        }
+    }
+
+
+
+
+

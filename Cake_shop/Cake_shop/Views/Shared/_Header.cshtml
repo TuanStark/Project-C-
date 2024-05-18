@@ -1,0 +1,68 @@
+﻿@{
+    Layout = null;
+}
+
+<header class="header">
+    <div class="header-wrap ">
+        <div class="logo">
+            <a href="/" class="logo-wrap">
+                <img class="img-fluid" src="https://theme.hstatic.net/200000833741/1001197874/14/logo.png?v=2"
+                     width="157" height="36">
+            </a>
+        </div>
+        <div class="navigation-wraper">
+            <nav class="header-navbar">
+                @Html.Action("MenuTop", "Menu")
+            </nav>
+        </div>
+        <div class="header-right">
+            <div class="icon-header">
+                <span class=" header-icon">
+                    <button class="header-icon-button js-find-button">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </span>
+                <!-- User Layout -->
+                <div class="header__account">
+                    <div class="header__account-wrap">
+                        @if (Session["user"] != null)
+                        {
+                            var userName = Session["userName"].ToString();
+                            <p style="font-size: 13px; margin: 0; padding-top: 7px;">@userName</p>
+                        }
+                        else
+                        {
+                            <i class="fa-solid fa-thin fa-user"></i>
+                        }
+                            
+                            <div class="header__acount-list">
+                                @if (Session["user"] != null)
+                                {
+                                    <a href="authenform.html" class="acount" title="Profile">Profile</a>
+                                    <a href="authenform.html" class="acount" title="Setting">Setting</a>
+                                    <a href="@Url.Action("DanngXuat","Home", new {area = "Admin"})" class="acount" title="Log Out">Log Out</a>
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("DangNhap","Home", new {area = "Admin"})" class="acount">Đăng nhập</a>
+                                    <a href="@Url.Action("DangKy","Home", new {area = "Admin"})" class="acount">Đăng ký</a>
+                                }
+                            </div>
+                        </div>
+                </div>
+                <!-- Cart layout -->
+                <div class="header__cart">
+                    <a href="@Url.Action("Index", "Cart")" class="header__cart-link">
+                        <div class="header__cart-wrap">
+                            <i class="fa-solid fa-thin fa-cart-shopping"></i>
+                            @*<span class="count-item count-item-pr" id="checkout-item">0</span>*@
+                           @* <div class="header__cart-list header__cart-list--no-cart">
+                                <span class="header__cart-list-no-cart-msg">Không có sản phẩm nào!</span>
+                            </div>*@
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

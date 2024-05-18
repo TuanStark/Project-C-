@@ -1,0 +1,289 @@
+﻿@model Cake_shop.Models.ProductDetailsViewModel
+
+@{
+    ViewBag.Title = "ProductsDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+}
+@if (Model != null)
+{
+    
+    <div class="l-9 ">
+        <div class="product-details">
+            <div class="col l-7">
+                <div class="shop-page-left1">
+                    <nav class="shop-page-home">
+                        <a href="/">Trang chủ</a> /  
+                        <a href="@Url.Action("ProductCategory", "Category", new { @id = @Model.Product.CategoryId})">@Model.Product.Category.name</a> /  
+                        <span class="text-bg-primary">@Model.Product.title</span>
+                    </nav>
+                </div>
+            </div>
+            <div id="gap-472004" class="gap-element">
+                <style>
+                    #gap-472004 {
+                        padding-top: 10px;
+                    }
+                </style>
+            </div>
+            <div class="well-small">
+                <div class="row-fluid">
+                    <div class="row">
+                        <div class="l-5">
+                            @if (Model.Galery != null && Model.Galery.Any())
+                            {
+                                <div class="container">
+                                    <div class="main">
+                                        <img src="@Model.Galery.FirstOrDefault(x => x.isDefault).thumbnail" class="img-feature" />
+                                        <div class="control prev">
+                                            <i class='bx bx-chevron-left'></i>
+                                        </div>
+                                        <div class="control next">
+                                            <i class='bx bx-chevron-right'></i>
+                                        </div>
+                                    </div>
+                                    <div class="list-image">
+                                        @foreach (var items in Model.Galery)
+                                        {
+                                          <div><img class="img-tag" src="@items.thumbnail" alt=""></div>
+                                        }
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+
+                        <div class="l-7">
+                            <div class="container-inner">
+                                <div class="product-details-heading">
+                                    <h1 class="product-details-titile">
+                                        @Model.Product.title
+                                    </h1>
+                                    <div class="home-product-item__price-1">
+                                        @if (Model.Product.discount > 0)
+                                        {
+                                            
+                                            var Pricesale = Model.Product.price - (Model.Product.price * (Model.Product.discount / 100));
+                                            <span class="home-product-item__price-old-1 " > @Cake_shop.Models.Common.FormatNumber.FormatNnumber(Model.Product.price,0)đ</span>
+                                            <span class="home-product-item__price-current-1 ">@Cake_shop.Models.Common.FormatNumber.FormatNnumber(Pricesale,0)đ</span>
+                                        }
+
+                                        else
+                                        {
+                                    <span class="home-product-item__price-current-1 ">@Cake_shop.Models.Common.FormatNumber.FormatNnumber(Model.Product.price, 0)đ</span>
+                                        }
+
+                                    </div>
+                                    <div class="product-details-description">
+                                        <p>@Model.Product.description</p>
+                                        <ul>
+                                            <li>Kích thước: @(Model.Product.size) cm, khối lượng @(Model.Product.weight)g/ bánh</li>
+                                            <li>Thành phần: @Model.Product.ingredient</li>
+                                            <li>@Model.Product.note</li>
+                                        </ul>
+                                    </div>
+                                    <div class="product-details-deal">
+                                        <h3> KHUYẾN MÃI - ƯU ĐÃI</h3>
+                                        <ul class="product-details-box">
+                                            <li>Nhâp mã <strong>STARK</strong> thêm 5% đơn hàng sao chép</li>
+                                            <li>Đồng giá Ship toàn quốc 25.000đ</li>
+                                            <li>Hỗ trợ 10.000 phí Ship cho đơn hàng từ 200.000đ</li>
+                                            <li>Miễn phí Ship cho đơn hàng từ 300.000đ</li>
+                                        </ul>
+                                    </div>
+                                    <div class="checkkk">
+                                        <div class="so-luong">Số lượng</div>
+                                        <div class="quantity">
+                                            <input type="button" value="-" class="bttn bttn-minus is-form">
+                                            <input type="number" id="quantity_value1" value="1" class="bttn input-text" readonly>
+                                            <input type="button" value="+" class="bttn bttn-plus is-form">
+                                        </div>
+                                        <div class="in-stock">Còn hàng</div>
+                                    </div>
+                                    <form action="" class="cartt">
+                                        <div class="product-details-wrapper">
+                                            <button class="button-add-cart button-cart btnAddToCart"  data-id="@Model.Product.id">Thêm vào giỏ hàng</button>
+                                            <button class="button-buy-now button-cart">Mua ngay</button>
+                                        </div>
+                                    </form>
+
+                                    <div class="icon-title">
+                                        <div class="icon-title-wrapper">
+                                            <div class="icon-share">Chia sẻ : </div>
+                                            <a href="https://www.facebook.com/congtuan.le.33483" class="circle"><i class='bx bxl-facebook'></i></a>
+                                            <a href="https://www.facebook.com/congtuan.le.33483" class="circle"><i class='bx bxl-twitter'></i></a>
+                                            <a href="" class="circle"><i class='bx bxl-pinterest-alt'></i></a>
+                                            <a href="" class="circle"><i class='bx bxl-linkedin-square'></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <div class="container-innerr">
+                <div class="tabs">
+                    <div class="tab tab-selected" id="tab1" onclick="changeTab('content1')">MÔ TẢ</div>
+                    <div class="tab" id="tab2" onclick="changeTab('content2')">ĐÁNH GIÁ</div>
+                </div>
+                <div class="tab-content" id="content1">
+                    <div class="tab-content-discription">
+                        <div class="tab-panels">
+                            <p>@Model.Product.description</p>
+                            <ul>
+                                <li>Số lượng: @(Model.Product.quantity) bánh</li>
+                                <li>Kích thước: @(Model.Product.size) cm, khối lượng @(Model.Product.weight)g/ bánh</li>
+                                <li>Thành phần: @Model.Product.ingredient </li>
+                                <li>@Model.Product.note</li>
+                            </ul>
+                            <p>
+                               @Html.Raw(Model.Product.content)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="content2">
+                    <div class="tab-content-discription">
+                        <div class="tab-panels">
+                            <div class="row">
+                                <div class="l-12">
+                                    <div class="comment">
+                                        <h3 class="review-title">Đánh giá</h3>
+                                        <p class="norereview">Chưa có đánh giá nào</p>
+                                    </div>
+                                    <div class="review-form-wrapper">
+                                        <div class="review-form">
+                                            <div class="review-form-inner">
+                                                <div class="comment-response">
+                                                    <h3 class="comment-reply-title">
+                                                        Hãy là người đầu tiên nhận xét “Bánh cupcake queen”
+                                                    </h3>
+                                                    <form action="" class="comment-form">
+                                                        <div class="comment-form-ratting">
+                                                            <label for="" class="ratting">Đánh giá của bạn</label>
+                                                            <div id="star-container">
+                                                                <span class="stars" onclick="handleRating(1)">★</span>
+                                                                <span class="stars" onclick="handleRating(2)">★</span>
+                                                                <span class="stars" onclick="handleRating(3)">★</span>
+                                                                <span class="stars" onclick="handleRating(4)">★</span>
+                                                                <span class="stars" onclick="handleRating(5)">★</span>
+                                                            </div>
+
+                                                            <div class="comment-form-comment">
+                                                                <label for="">Nhận xét của bạn</label>
+                                                                <textarea class="textarea" name="" id="" cols="45" rows="8"></textarea>
+                                                            </div>
+                                                            <div class="comment-form-register">
+                                                                <div class="comment-form-author format">
+                                                                    <label for="">Tên</label>
+                                                                    <input type="text" value size="52">
+                                                                </div>
+                                                                <div class="comment-form-email format">
+                                                                    <label for="">Email</label>
+                                                                    <input type="text" value size="52">
+                                                                </div>
+                                                            </div>
+                                                            <div class="comment-form-cookies-consent">
+                                                                <input type="checkbox" class="check">
+                                                                <label for="">
+                                                                    Lưu tên của tôi, email, và trang web trong trình
+                                                                    duyệt này cho lần bình luận kế tiếp của tôi.
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-summit">
+                                                                <input type="submit" class="submit" value="Gửi đi" class="submit-form">
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="l-12">
+        <div class="section">
+            <div class="section__content">
+                <div class="section__content-title">
+                    <h3 class="section__content-title-name">SẢN PHẨM TƯƠNG TỰ</h3>
+                </div>
+                <div class="section__content-news">
+                    <div class="row">
+                            @foreach (var items in Model.SimilarProducts)
+                            {
+                                var StrImgae = "";
+                                var imgg = items.ProductImages.FirstOrDefault(y => y.isDefault);
+                                if (imgg != null)
+                                {
+                                    StrImgae = imgg.thumbnail;
+                                }
+                                <div class="col l-2-5">
+                                    <!-- Products Item -->
+                                    <div class="home-product-item">
+                                        <div class="home-product-item__wrap">
+                                            <div class="home-product-item__sale">
+                                                <a href="@Url.Action("ProductsDetails", "Products", new { @id = items.id })" class="product_link">
+                                                    <div class="home-product-item-image">
+                                                        <img src="@StrImgae"
+                                                             class="home-product-item__img">
+                                                    </div>
+                                                </a>
+                                                <div class="home-product-item__sale-watch-1">
+                                                    <a href="#" class="sale">
+                                                        <i class="fa-solid fa-cart-shopping"></i>
+                                                    </a>
+                                                    <a href="@Url.Action("ProductsDetails", "Products", new { @id = items.id })" class="eye">
+                                                        <i class="fa-solid fa-eye"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <a href="@Url.Action("ProductsDetails", "Products", new { @id = items.id })" class="product_link">
+                                                <h4 class="home-product-item__name">
+                                                    @items.title
+                                                </h4>
+                                            </a>
+                                            <div class="home-product-item__price">
+                                                @if (items.discount > 0)
+                                                {
+                                                    var Pricesale = items.price - (items.price * (items.discount / 100));
+                                                    <span class="home-product-item__price-old ">@Cake_shop.Models.Common.FormatNumber.FormatNnumber(items.price,0)đ</span>
+                                                    <span class="home-product-item__price-current ">@Cake_shop.Models.Common.FormatNumber.FormatNnumber(Pricesale,0)đ</span>
+                                                }
+                                                else
+                                                {
+                                            <span class="home-product-item__price-current ">@Cake_shop.Models.Common.FormatNumber.FormatNnumber(items.price,0)đ</span>
+                                                }
+
+                                            </div>
+                                            <div class="home-product-item__sale-off">
+                                                @if (items.discount > 0)
+                                                {
+                                                    <span class="home-product-item__sale-off-percent">-@items.discount%</span>
+                                                }
+                                                else
+                                                {
+                                                    <div></div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

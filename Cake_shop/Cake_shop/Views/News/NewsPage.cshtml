@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Cake_shop.Models.EF.NewsModel>
+
+@{
+    ViewBag.Title = "NewsPage";
+}
+
+
+    <div class="section__content-title">
+        <div class="section__content-title-img">
+            <img src="https://codengon.vn/banhngot/wp-content/uploads/2022/09/index-blog-1-icon.webp"
+                 alt="">
+        </div>
+        <h3 class="section__content-title-name">TIN TỨC</h3>
+    </div>
+    @if (Model != null && Model.Any())
+    {
+        foreach (var item in Model)
+        {
+            <a href="@Url.Action("NewsDetail","News" , new { @id = item.id })" class="section__news-link">
+                <ul class="section__news-list">
+                    <li class="section__news-items">
+                        <div class="section__news-img">
+                            <img width="500px" height="200px" src="@item.img" alt="">
+                        </div>
+                        <div class="section__news-text" style="width:530px">
+                            <h5 class="section__news-heading">
+                                @item.title
+                            </h5>
+                            <div class="section__news-date">@item.createDate.ToString()</div>
+                            <p class="section__news-note">
+                                @item.sumary
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </a>
+        }
+    }
+
+

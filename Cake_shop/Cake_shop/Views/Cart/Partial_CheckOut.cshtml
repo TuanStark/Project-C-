@@ -1,0 +1,62 @@
+﻿@model Cake_shop.Models.OrderViewModel
+
+@using (Html.BeginForm("CheckOut", "Cart", FormMethod.Post))
+{
+    <div class="customer-details">
+        <div class="clear">
+            <div class="woocommerce-billing-filed">
+                <h3>THÔNG TIN THANH TOÁN</h3>
+                <div class="woocommerce-billing-filed__wrapper">
+                    <div class="form-row">
+                        <span>Tên</span>
+                        <div class="input-wrapper">
+                            @Html.TextBoxFor(model => model.CustomerName, new { @class = "input-text", required = "required", autocomplete = "off" })
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <span>Email</span>
+                        <div class="input-wrapper">
+                            @Html.TextBoxFor(model => model.Email, new { @class = "input-text", required = "required", autocomplete = "off" })
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <span>Địa chỉ</span>
+                        <div class="input-wrapper">
+                            @Html.TextBoxFor(model => model.Address, new { @class = "input-text", required = "required", autocomplete = "off" })
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <span>Số điện thoại</span>
+                        <div class="input-wrapper">
+                            @Html.TextBoxFor(model => model.Phone, new { @class = "input-text", required = "required", autocomplete = "off" })
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <span>Hình thức thanh toán</span>
+                        @Html.DropDownListFor(model => model.payment_method, new List<SelectListItem>
+                        {
+                            new SelectListItem { Text = "COD", Value = "1" },
+                            new SelectListItem { Text = "Chuyển khoản", Value = "2" }
+                        }, "Chọn hình thức thanh toán", new { @class = "input-text", required = "required" })
+                    </div>
+                    <div id="gap-1276" class="gap-element">
+                        <style>
+                            #gap-1276 {
+                                margin-bottom: 10px;
+                            }
+                        </style>
+                    </div>
+                    <div class="place-order">
+                        <div class="woocommerce-terms-and-conditions-wrapper">
+                            <button type="submit" class="btn-alt">Đặt hàng</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+

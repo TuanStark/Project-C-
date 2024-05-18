@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Cake_shop.Models.ShoppingCartItem>
+
+<div class="has-border">
+    <div class="checkout-slider">
+        <h3>ĐƠN HÀNG CỦA BẠN</h3>
+        <div class="woocommerce-checkout-review-order">
+            <table class="shop_table">
+                <thead>
+                    <tr>
+                        <th class="product-name">Sản phẩm</th>
+                        <th class="product-total">Giá tiền</th>
+                    </tr>
+                </thead>
+                @if (Model != null && Model.Any())
+                {
+                    var tongtien = decimal.Zero;
+                    foreach (var items in Model)
+                    {
+                        tongtien += items.TotalPrice;
+                        <tr class="cart_item">
+                            <td class="product-name">
+                                @items.ProductName
+                                <strong>  x(@items.Quantity)</strong>
+                            </td>
+                            <td class="product-total">
+                                <span class="woocommerce-price-amount amount">@Cake_shop.Models.Common.FormatNumber.FormatNnumber(items.Price, 0)</span>
+                            </td>
+                        </tr>
+                    }
+                    <tr class="order-total">
+                        <th>Tổng tiền: </th>
+                        <td>
+                            <span class="woocommerce-price-amount amount">@Cake_shop.Models.Common.FormatNumber.FormatNnumber(tongtien, 0)</span>
+                        </td>
+                    </tr>
+
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+

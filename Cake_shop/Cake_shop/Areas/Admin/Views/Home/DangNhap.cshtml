@@ -1,0 +1,44 @@
+﻿@model Cake_shop.Models.EF.UserModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/assets/css/authenform.css" rel="stylesheet" />
+    <link href="~/assets/fontawesome/fontawesome-free-6.5.1/fontawesome-free-6.5.1-web/css/all.min.css" rel="stylesheet" />
+</head>
+<body>
+    <h2></h2>
+    <div class="container" id="container">
+        <div class="form-container sign-in-container">
+            <form action="#" method="post">
+                <h1>Đăng nhập</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>hoặc sử dụng tài khoản của bạn</span>
+                <input name="user" type="text" placeholder="Username" />
+
+                <input name="password" type="password" placeholder="Password" />
+                <a href="#">Quên mât khẩu?</a>
+                <button type="submit">Đăng nhập</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, friend!</h1>
+                    <p>Nhập thông tin cá nhân của bạn và bắt đầu hành trình với chúng tôi</p>
+                    <a href="@Url.Action("DangKy","Home", new {area ="Admin"})" class="btn ghost" id="signUp">Đăng kí</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,228 @@
+﻿@model PagedList.PagedList<Cake_shop.Models.ProductModel>
+@using PagedList.Mvc;
+@using PagedList;
+@{
+    ViewBag.Title = "Danh sách sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section naviheader {
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/Admin/Home" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/Admin/Category" class="nav-link">@ViewBag.Title</a>
+        </li>
+    </ul>
+}
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Quản lí sản phẩm</h1>
+                @*<a href="~/Models/EF/CategoryModel.cs">~/Models/EF/CategoryModel.cs</a>*@
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">@ViewBag.Title</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">@ViewBag.Title</h3>
+
+            <div class="card-tools">
+                <a href="/Admin/Products/Add" class="btn btn-primary">Thêm mới</a>
+                <a href="#" class="btn btn-danger" id="btnDeleteAll">Xóa</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="SelectAll" /></th>
+                        <th>STT</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Loại sản phẩm</th>
+                        <th>Hình ảnh</th>
+                        <th>Số lượng</th>
+                        <th>Giá</th>
+                        <th>Ngày tạo</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
+                        /* var i = 1;*/
+                        foreach (var item in Model)
+                        {
+                            <tr id="trow_@item.id">
+                                <td><input type="checkbox" class="cbkItem" value="@item.id" /></td>
+                                <td>@i</td>
+                                <td>@item.title</td>
+                                <td>@item.Category.name</td>
+                                <td>
+                                    @if (item.ProductImages.Any(x => x.isDefault))
+                                    {
+                                        <img src="@item.ProductImages.FirstOrDefault(x => x.isDefault).thumbnail" class="imgproduct" width="50" data-id="@item.id" />
+                                    }
+                                </td>
+                                <td>@item.quantity</td>
+                                <td>@item.price</td>
+                                <td>
+                                    @if (item.createDate != null)
+                                    {
+                                        @item.createDate.Value.ToString("dd/MM/yyyy")
+                                    }
+                                    else
+                                    {
+                                        <span>00/00/0000</span>
+                                    }
+                                </td>
+                                <td>
+                                    <a href="/Admin/Products/edit/@item.id" class="btn btn-sm btn-primary">Sửa</a>
+                                    <a href="#" data-id="@item.id" class="btn btn-sm btn-danger btnDelete"> Xóa</a>
+                                </td>
+                            </tr>
+                            i = i + 1;
+                        }
+
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="8"> Không có bản ghi nào</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+        </div>
+        <!-- /.card-footer-->
+    </div>
+    <!-- /.card -->
+
+</section>
+<!-- /.content -->
+<div id="dialog">
+    <iframe id="myIframe" style="border: 0; width:100%; height:100%"></iframe>
+</div>
+@section scripts{
+    <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#dialog').dialog({
+                autoOpen: false,
+                show: "fade",
+                hide: "fade",
+                modal: true,
+                height: 600,
+                width: 700,
+                resizable: true,
+                title: 'Quản lí ảnh sản phẩm',
+                close: function () {
+                    window.location.reload();
+                }
+            });
+
+            $('.body').on("click", ".imgproduct", function () {
+                var proid = $(this).attr("data-id");
+                $("#dialog #myIframe").attr("src", "/admin/ProductsImage/Index?id=" + proid);
+                $('#dialog').dialog('open');
+                return false;
+            });
+
+            $('body').on('click', '#btnDeleteAll', function (e) {
+                e.preventDefault();
+                var str = "";
+                var checkbox = $(this).parents('.card').find('tr td input:checkbox');// lấy cái class chứa cái nút DeleteAll
+                var i = 0;
+                checkbox.each(function () {
+                    if (this.checked) {
+                        checkbox.attr('selected', 'checked');
+                        var _id = $(this).val();
+                        if (i == 0) {
+                            str += _id;
+                        } else {
+                            str += "," + _id;
+                        }
+                        i++;
+                    } else {
+                        checkbox.attr('selected', '');
+                        var _id = $(this).val();
+                        str.remove(_id);
+                    }
+                });
+                if (str.length > 0) {
+                    var conf = confirm('bạn có muốn xóa các bản ghi này hay không ?');
+                    if (conf == true) Ơ
+                    $.ajax({
+                        url: '/Admin/Products/deleteAll',
+                        type: 'POST',
+                        data: { ids: str },
+                        success: function (rs) {
+                            if (rs.success) {
+                                location.reload();
+                            }
+                        }
+                    });
+                }
+            });
+            $('body').on('change', '#SelectAll', function () {
+                var checkStatus = this.checked;
+                var checkbox = $(this).parents('.card-body').find('tr td input:checkbox');
+                checkbox.each(function () {
+                    this.checked = checkStatus;
+                    if (this.checked) {
+                        checkbox.attr('selected', 'checked');
+                    } else {
+                        checkbox.attr('selected', '');
+                    }
+                });
+            });
+            $('body').on('click', '.btnDelete', function () {
+                var id = $(this).data("id");
+                var conf = confirm("Bạn có muốn xóa bản ghi này không?");
+                if (conf) {
+                    $.ajax({
+                        url: '/Admin/Products/Delete',
+                        type: 'POST',
+                        data: { id: id },
+                        success: function (rs) {
+                            if (rs.success) {
+                                $('#trow_' + id).remove();
+                            } else {
+                                alert("Xóa bản ghi không thành công.");
+                            }
+                        },
+                        error: function () {
+                            alert("Đã xảy ra lỗi khi thực hiện xóa bản ghi.");
+                        }
+                    });
+                }
+            });
+        });
+
+    </script>
+}
+

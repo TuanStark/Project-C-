@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Cake_shop.Models.ShoppingCartItem>
+
+@{
+    Layout = null;
+}
+
+<div class="content-item">
+    <table class="shop__table"style="width: 100%">
+        <thead>
+            <tr>
+                <th class="product-name" colspan="4">
+                    Sản Phẩm
+                </th>
+                <th class="product-price">
+                    Giá
+                </th>
+                <th class="product-quantity">
+                    Số lượng
+                </th>
+                <th class="product-subtotal ">
+                    Tạm tính
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                var tongtien = decimal.Zero;
+                foreach (var items in Model)
+                {
+                    tongtien += items.TotalPrice;
+                    <tr class="shop__table-item text-center" id="trow_@items.ProductId">
+                        <td class="product-remove"><a href="#" class=" btnDelete" data-id="@items.ProductId">x</a></td>
+                        <td class="product-check "><a href="#" data-id="@items.ProductId" class="btn-up btnUpdate">Cập nhật</a></td>
+                        <td class="product-thumbnail">
+                            <div class="product-thumbnail_box">
+                                <a href="">
+                                    <img width="90" height="90" src="@items.ProductImg" />
+                                </a>
+                            </div>
+                        </td>
+                        <td class="product-name"><a href="@Url.Action("ProductsDetails", "Products", new { @id = items.ProductId })">@items.ProductName</a></td>
+                        <td class="product-price"><span class="price">@Cake_shop.Models.Common.FormatNumber.FormatNnumber(items.Price, 0)</span></td>
+                        <td class="product-quantity">
+                            <div class="checkkk">
+                                <div class="quantity">
+                                    <input type="button" value="-" class="bttn bttn-minus is-form">
+                                    <input type="number" id="Quantiy_@items.ProductId" value="@items.Quantity" class="bttn input-text">
+                                    <input type="button" value="+" class="bttn bttn-plus is-form">
+                                </div>
+                            </div>
+                        </td>
+                        <td class="product-subtotal">
+                            <span class="price">@Cake_shop.Models.Common.FormatNumber.FormatNnumber(items.TotalPrice, 2)</span>
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <th colspan="6" class="text-right">Tổng :</th>
+                    <th class="product-price" style="text-transform:lowercase">@Cake_shop.Models.Common.FormatNumber.FormatNnumber(tongtien, 0)</th>
+                </tr>
+                <tr>
+                    <th colspan="6" class="text-right">Thanh toán :</th>
+                    <td class="check-out"><a href="@Url.Action("CheckOut","Cart")" class="btn-check">Thanh toán</a></td>
+                </tr>
+            }
+            else
+            {
+            <th colspan="7"> không có sản phẩm nào trong giỏ hàng !</th>
+             }
+            </tbody>
+        </table>
+    </div>
+
+

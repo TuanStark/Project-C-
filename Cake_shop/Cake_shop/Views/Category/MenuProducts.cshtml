@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Cake_shop.Models.Admin.CategoryModel>
+
+@if (Model != null && Model.Any())
+{
+    <div class="grid__column-3">
+        <nav class="category">
+            <h3 class="category__heading">
+                <i class="category__heading-icon fa-solid fa-list"></i>
+                DANH MỤC SẢN PHẨM
+            </h3>
+
+            <ul class="category-list">
+                <li class="categoey-item">
+                    <a href="/Products/getAllProduct" class="category-item__link">
+                        <img class="category-item__link-icon" src="https://codengon.vn/banhngot/wp-content/uploads/2022/09/menu_icon_2.webp"></img>
+                        Bộ sưu tập bánh
+                    </a>
+                </li>
+                @foreach (var item in Model)
+                {
+                    <li class="categoey-item">
+                        <a href="@Url.Action("ProductCategory", "Category", new { id = item.id })" class="category-item__link">
+                            <img class="category-item__link-icon" src="@item.img"></img>
+                            @item.name
+                        </a>
+                    </li>
+                }
+
+            </ul>
+        </nav>
+    </div>
+}
+

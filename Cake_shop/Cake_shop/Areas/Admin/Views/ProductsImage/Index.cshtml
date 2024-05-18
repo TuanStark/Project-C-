@@ -1,0 +1,108 @@
+﻿@model IEnumerable<Cake_shop.Models.EF.GaleryModels>
+@{
+    ViewBag.Title = "Ảnh sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutEmpty.cshtml";
+}
+<style>
+    .gImage{
+        list-style:none;
+        margin:0;
+        padding:0;
+        display:flex;
+    }
+    .gImage li{
+        display:inline-block;
+        position:relative;
+    }
+    .box-btn{
+        position:absolute;
+        bottom:0;
+        left: 0;
+        width:100%;
+        text-align:center;
+    }
+</style>
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Ảnh sản phẩm</h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-danger" title="Collapse">
+                    Xóa hết
+                </button>
+                <input type="button" class="btn btn-success" value="Tải ảnh" onclick="BrowerServer('txtImage')" />
+            </div>
+        </div>
+        <div class="card-body">
+            <ul class="gImage">
+                @if(Model != null)
+            {
+                    foreach(var items in Model)
+                {
+                        <li id="trow_@items.id">
+                            <img src="@items.thumbnail" width="200" />
+                            <div class="box-btn">
+                                <a href="#" data-id="@items.id" class="btn btn-danger btnDelete"><i class="fa fa-trash"></i></a>
+                                @if (items.isDefault)
+                                {
+                                    <a href="#" data-id="@items.id" class="btn btn-danger btnDefault"><i class="fa fa-check"></i></a>
+                                }
+                                else
+                                {
+                                    <a href="#" data-id="@items.id" class="btn btn-danger btnDefault">X</a>
+                                }
+                            </div>
+                        </li>
+                }
+            }
+            </ul>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+        </div>
+        <!-- /.card-footer-->
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+        $('.body').on('click', '.btnDelete', function () {
+            var id = $(this).data('id');
+            var conf = confirm('bạn có đồng ý xóa ảnh này ?');
+            if (conf == true) {
+                $.ajax({
+                    url: '/admin/ProductsImage/Delete',
+                    type: 'POST',
+                    data: { id: id },
+                    success: function () {
+                        if (rs.success) {
+                            $('#trow_' + id).remove();
+                        }
+                    }
+                })
+            }
+        });
+        function AddImage(id, url) {
+            $.ajax({
+                url: '/admin/ProductsImage/AddImage',
+                type: 'POST',
+                data: { productID: id, url:url },
+                success: function () {
+                    if (rs.success) {
+                        window.location.reload();
+                    }
+                }
+            })
+        }
+        function BrowerServer(filed) {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                AddImage(@ViewBag.ProductID, fileUrl)
+            };
+            finder.popup();
+        }
+    })
+</script>
+
+

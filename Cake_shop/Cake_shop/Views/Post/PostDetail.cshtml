@@ -1,0 +1,70 @@
+﻿@model Cake_shop.Models.EF.Post
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <link rel="stylesheet"
+          href="~/assets/fontawesome/fontawesome-free-6.5.1/fontawesome-free-6.5.1-web/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="~/assets/css/base.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <!-- <link rel="stylesheet" href="./assets/css/gri"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+          integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"
+          integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+          integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/assets/css/slick.css">
+    <link rel="stylesheet" href="~/assets/css/grid.css">
+    <link rel="stylesheet" href="~/assets/css/product_details.css">
+    <link rel="stylesheet" href="~/assets/css/cart.css">
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+    <link href="~/assets/css/lienhe.css" rel="stylesheet" />
+</head>
+<body>
+    @Html.Partial("_Header")
+
+
+    <div class="app__container">
+        <div class="entry-block">
+            <heder class="entry-header">
+                <div class="entry-header-text">
+                    <h6 class="entry-category">
+                        <a href="/" class="entry-category-news">BÀI VIẾT</a>
+                    </h6>
+                    <h1 class="entry-title">@Model.title</h1>
+                    <div class="entry-divider"></div>
+                    <div class="entry-meta">
+                        <span>POSTED ON @Model.createDate BY ADMIN</span>
+                    </div>
+                </div>
+            </heder>
+            <div class="entry-content">
+                <div class="entry-img">
+                    <img src="@Model.image" alt="">
+                </div>
+                <div id="content">
+                    <p>
+                        @Html.Raw(Model.detail)
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    @Html.Partial("_Footer")
+
+</body>
+</html>

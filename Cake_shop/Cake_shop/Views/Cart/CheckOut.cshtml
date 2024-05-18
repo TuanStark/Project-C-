@@ -1,0 +1,143 @@
+﻿@model Cake_shop.Models.OrderViewModel
+@{
+    ViewBag.Title = "Thanh toán";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/assets/css/style.css" rel="stylesheet" />
+    <link href="~/assets/fontawesome/fontawesome-free-6.5.1/fontawesome-free-6.5.1-web/css/all.min.css" rel="stylesheet" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="~/assets/css/base.css" rel="stylesheet" />
+    <link href="~/assets/css/slick.css" rel="stylesheet" />
+    <link href="~/assets/css/grid.css" rel="stylesheet" />
+    <link href="~/assets/css/product_details.css" rel="stylesheet" />
+    <link href="~/assets/css/cart.css" rel="stylesheet" />
+    <link href="~/assets/css/pay.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <!-- Header + Navigation -->
+    @Html.Partial("_Header")
+
+    <div class="page-wrapper">
+        <div class="grid wide">
+            <div class="row">
+                <div class="col l-12">
+                    <div class="col-inner">
+                        <div class="pay-content-area">
+                            <div class="row">
+                                <div class="col l-11">
+                                    <div class="col-inner">
+                                        <div class="woocommerce" style="margin-left: 14px">
+                                            <div class="woocommerce-form-login">
+                                                <div class="woocommerce-info">
+                                                    <div class="woocommerce-text">
+                                                        Bạn đã có tài khoản ?
+                                                        <a href="#" class="showlogin">Ấn vào đây để đăng nhập</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <form class="woocommerce-form-coupon">
+                                                <p>Nếu bạn có mã giảm giá, vui lòng điền phía dưới.</p>
+                                                <div class="coupon">
+                                                    <div class="coupon-wrapper">
+                                                        <div class="coupon-text">
+                                                            <input type="text" class="input-text" placeholder="Mã ưu đãi"></input>
+                                                        </div>
+                                                        <div class="coupon-submit">
+                                                            <button type="submit" class="button">Áp dụng</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <form action="" class="woocommerce-checkout">
+                                @if (ViewBag.Checkcart != null)
+                                {
+                                   
+                                    <div class="row">
+                                        <div id="show_success"></div>
+                                        <div class="col l-6">
+                                            @Html.Action("Partial_CheckOut", "Cart")
+                                        </div>
+                                        <div class="col l-5">
+                                            @Html.Action("Partial_Item_ThanhToan", "Cart")
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div>
+                                        Bạn chưa có sản phẩm nào. Vui lòng quay lại trang <a href="/Products/getAllProduct">sản phẩm</a> để mua hàng
+                                    </div>
+                                }
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Html.Partial("_Footer")
+
+    <script src="~/assets/js/indexx.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js" integrity="sha512-eP8DK17a+MOcKHXC5Yrqzd8WI5WKh6F1TIk5QZ/8Lbv+8ssblcz7oGC8ZmQ/ZSAPa7ZmsCU4e/hcovqR8jfJqA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="~/assets/js/slickSlider.js"></script>
+    <script src="~/assets/js/modal.js"></script>
+    <script src="~/assets/js/product-dt.js"></script>
+    <script src="~/assets/js/tab.js"></script>
+    <script src="~/assets/js/ratting.js"></script>
+    <script src="~/assets/js/tabpay.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    @section scripts{
+
+        <script>
+            function OnSuccessCO(rs) {
+                if (rs.success) {
+                    $('#show_success').html("Bạn mua hàng thành công !")
+                }
+            }
+            $(document).ready(function () {
+                $('#myForm').validate({
+                    rules: {
+                        'CustomerName': {
+                            required: true
+                        },
+                        'Email': {
+                            required: true
+                                            email: true
+                        },
+                        'Address': {
+                            required: true
+                        },
+                        'Phone': {
+                            required: true
+                        }
+                    },
+                    messages: {
+                        'CustomerName': 'Bạn không để trống trường này',
+                        'Address': 'Bạn không để trống trường này',
+                        'Phone': 'Bạn không để trống trường này',
+                        'Email': 'Email chưa hợp lệ',
+                    }
+                });
+            });
+        </script>
+
+    }
+</body>
+
+</html>

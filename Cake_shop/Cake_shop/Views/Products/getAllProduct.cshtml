@@ -1,0 +1,106 @@
+﻿@model PagedList.PagedList<Cake_shop.Models.ProductModel>
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Tất cả sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="l-9 ">
+    <div class="shop-page-title">
+        <div class="row">
+            <div class="col l-5">
+                <div class="shop-page-left">
+                    <nav class="shop-page-home">
+                        <a href="/">Trang chủ</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="col l-6">
+                <div class="shop-page-right">
+                    <div class="shop-page-offset">
+                        <label for="fruitSelection">Hiển Thị Theo : </label>
+                        <select id="fruitSelection" name="fruit">
+                            <option value="" selected disabled>Thứ tự mặc định</option>
+                            <option value="newest">Mới nhất</option>
+                            <option value="rating">Thứ tự: A -> Z</option>
+                            <option value="price_desc">Thứ tự theo giá : Cao -> Thấp</option>
+                            <option value="price_asc">Thứ tự theo giá : Thấp -> Cao</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @if (Model == null)
+    {
+        <p>Không có sản phẩm nào ở đây</p>
+    }
+    else
+    {
+        <div class="shop-container">
+            <div class="row">
+                @foreach (var items in Model)
+                {
+                    <div class="col l-3-test">
+                        <div class="home-product-item">
+                            <div class="home-product-item__wrap">
+                                <div class="home-product-item__sale">
+                                    <a href="@Url.Action("ProductsDetails", "Products", new { @id = items.id })" class="product_link">
+                                        <div class="home-product-item-image">
+                                            <img src="@items.img" class="home-product-item__img">
+                                        </div>
+                                    </a>
+                                    <div class="home-product-item__sale-watch-1">
+                                        <a href="#" data-id="@items.id" class="sale btnAddToCart">
+                                            <i class="fa-solid fa-cart-shopping"></i>
+                                        </a>
+                                        <a href="@Url.Action("ProductsDetails", "Products", new { @id = items.id })" class="eye">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <a href="@Url.Action("ProductsDetails", "Products", new { @id = items.id })" class="product_link">
+                                    <h4 class="home-product-item__name">@items.title</h4>
+                                </a>
+                                <div class="home-product-item__price">
+                                    @if (items.discount > 0)
+                                    {
+                                        var Pricesale = items.price - (items.price * (items.discount / 100));
+                                        <span class="home-product-item__price-old ">@Cake_shop.Models.Common.FormatNumber.FormatNnumber(items.price, 0)</span>
+                                        <span class="home-product-item__price-current ">@Cake_shop.Models.Common.FormatNumber.FormatNnumber(Pricesale, 0)</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="home-product-item__price-current ">@Cake_shop.Models.Common.FormatNumber.FormatNnumber(items.price, 0)</span>
+                                    }
+
+                                </div>
+                                <div class="home-product-item__sale-off">
+                                    @if (items.discount > 0)
+                                    {
+                                        <span class="home-product-item__sale-off-percent">-@items.discount%</span>
+                                    }
+                                    else
+                                    {
+                                        <div></div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="row">
+                <div class="l-5">
+                </div>
+                <div class="l-6">
+                    @Html.PagedListPager(Model, page => Url.Action("getAllProduct", new { page }))
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+

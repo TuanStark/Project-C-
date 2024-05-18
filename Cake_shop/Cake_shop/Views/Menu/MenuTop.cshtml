@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Cake_shop.Models.EF.Menu>
+
+
+
+@if (Model != null && Model.Any())
+{
+
+    <ul class="navigation-wraper-horizontal">
+        @foreach (var item in Model)
+        {
+            <li class="menu-item list-group-item">
+                <a href="@item.link" class="menu-item_link" style="transform: translateY(0%);">
+                    <span>@item.name</span>
+                </a>
+            </li>
+        }
+    </ul>
+}
+

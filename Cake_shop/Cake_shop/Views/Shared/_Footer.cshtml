@@ -1,0 +1,159 @@
+﻿@{
+    Layout = null;
+}
+
+<footer class="footer">
+    <div class="mid-footer">
+        <div class="grid-2">
+            <div class="grid__row">
+                <div class="grid__column-9-1">
+                    <div class="footer-block">
+                        <a href="#" class="footer-link">
+                            <img src="https://theme.hstatic.net/200000833741/1001197874/14/logo-footer.png?v=2"
+                                 alt="" width="245" height="60">
+                        </a>
+                        <div class="single-contact">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div class="content">
+                                Địa chỉ:
+                                <span>150/8 Nguyễn Duy Cung, Phường 12, Tp.HCM</span>
+                            </div>
+                        </div>
+                        <div class="single-contact">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                            <div class="content">
+                                Số điện thoại:
+                                <span>0845663357</span>
+                            </div>
+                        </div>
+                        <div class="single-contact">
+                            <i class="fa-solid fa-envelope"></i>
+                            <div class="content">
+                                Email:
+                                <span>lecongtuan472004@gmail.com</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid__column-9-1">
+                    <div class="footer-block">
+                        <h3 class="footer-title">
+                            Hỗ trợ khách hàng
+                        </h3>
+                        <ul class="list-menu">
+                            <li class="list-item">
+                                <a href="#" class="list-item-link">Tìm kiếm</a>
+                            </li>
+                            <li class="list-item">
+                                <a href="#" class="list-item-link">Tin tức</a>
+                            </li>
+                            <li class="list-item">
+                                <a href="#" class="list-item-link">Hướng dẫn làm bánh</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="grid__column-9-1">
+                    <div class="footer-block">
+                        <h3 class="footer-title">
+                            Chính sách
+                        </h3>
+                        <ul class="list-menu">
+                            <li class="list-item">
+                                <a href="#" class="list-item-link">Chính sách bán hàng</a>
+                            </li>
+                            <li class="list-item">
+                                <a href="#" class="list-item-link">Chính sách đổi trả hàng</a>
+                            </li>
+                            <li class="list-item">
+                                <a href="#" class="list-item-link">Chính sách giao hàng</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="grid__column-9-1">
+                    <div class="footer-block">
+                        <h3 class="footer-title">
+                            Fanpage
+                        </h3>
+                        @*<ul class="list-menu">
+            <li class="list-item">
+                <a href="https://www.facebook.com/congtuan.le.33483" class="list-item-link">
+                    <img src="https://theme.hstatic.net/200000833741/1001197874/14/facebook.png?v=2"
+                         alt="">
+                    <span>facebook</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="#" class="list-item-link">
+                    <img src="https://theme.hstatic.net/200000833741/1001197874/14/instagram.png?v=2"
+                         alt="">
+                    <span>instagram</span>
+                </a>
+            </li>
+
+            <li class="list-item">
+                <a href="#" class="list-item-link">
+                    <img src="https://theme.hstatic.net/200000833741/1001197874/14/tiktok.png?v=2"
+                         alt="">
+                    <span>tiktok</span>
+                </a>
+            </li>
+        </ul>*@
+                        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook&tabs&width=340&height=130&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=false&appId" width="340" height="130" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</footer>
+<div class="modal">
+    <div class="modal__overlay"></div>
+    <div class="modal__body js-modal__body" id="search__btn">
+        <div class="modal__inner">
+            <div class="header-wrap-1 ">
+                <div class="logo">
+                    <a href="index.html" class="logo-wrap">
+                        <img class="img-fluid"
+                             src="https://theme.hstatic.net/200000833741/1001197874/14/logo.png?v=2" width="157"
+                             height="36">
+                    </a>
+                </div>
+                <div class="header-search">
+                    <input type="text" class="header-search-input" placeholder="Bạn muốn tìm cái gì ?">
+                    <button class="header-search-btn">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+                <div class="header-right">
+                    <div class="icon-header">
+                        <span class=" header-icon">
+                            <a class="header-icon-link js-header-icon-link">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </a>
+                        </span>
+                        <!-- User Layout -->
+                        <div class="header__account">
+                            <a href="" class="header__account-wrap">
+                                <i class="fa-solid fa-thin fa-user"></i>
+                            </a>
+                        </div>
+                        <!-- Cart layout -->
+                        <div class="header__cart">
+                            <a href="@Url.Action("Index", "Cart")" class="header__cart-link">
+                                <div class="header__cart-wrap">
+                                    <i class="fa-solid fa-thin fa-cart-shopping"></i>
+                                    
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
