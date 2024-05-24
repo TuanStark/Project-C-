@@ -60,28 +60,79 @@
                                     </div>
                                 </div>
                             </div>
-                            <form action="" class="woocommerce-checkout">
-                                @if (ViewBag.Checkcart != null)
+                            @using (Html.BeginForm("CheckOut", "Cart", FormMethod.Post, new { @class = "woocommerce-checkout" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                if (ViewBag.Checkcart != null)
                                 {
-                                   
                                     <div class="row">
                                         <div id="show_success"></div>
                                         <div class="col l-6">
-                                            @Html.Action("Partial_CheckOut", "Cart")
+                                            @* @Html.Action("Partial_CheckOut", "Cart")*@
+                                            <div class="customer-details">
+                                                <div class="clear">
+                                                    <div class="woocommerce-billing-filed">
+                                                        <h3>THÔNG TIN THANH TOÁN</h3>
+                                                        <div class="woocommerce-billing-filed__wrapper">
+                                                            <div class="form-row">
+                                                                <span>Tên</span>
+                                                                <div class="input-wrapper">
+                                                                    @Html.TextBoxFor(model => model.CustomerName, new { @class = "input-text", required = "required", autocomplete = "off" })
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <span>Email</span>
+                                                                <div class="input-wrapper">
+                                                                    @Html.TextBoxFor(model => model.Email, new { @class = "input-text", required = "required", autocomplete = "off" })
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <span>Địa chỉ</span>
+                                                                <div class="input-wrapper">
+                                                                    @Html.TextBoxFor(model => model.Address, new { @class = "input-text", required = "required", autocomplete = "off" })
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <span>Số điện thoại</span>
+                                                                <div class="input-wrapper">
+                                                                    @Html.TextBoxFor(model => model.Phone, new { @class = "input-text", required = "required", autocomplete = "off" })
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <span>Hình thức thanh toán</span>
+                                                                @Html.DropDownListFor(model => model.payment_method, new List<SelectListItem>
+                                                                {
+                                                                    new SelectListItem { Text = "COD", Value = "1" },
+                                                                    new SelectListItem { Text = "Chuyển khoản", Value = "2" }
+                                                                }, "Chọn hình thức thanh toán", new { @class = "input-text", required = "required" })
+                                                            </div>
+                                                            <div id="gap-1276" class="gap-element">
+                                                                <style>
+                                                                    #gap-1276 {
+                                                                        margin-bottom: 10px;
+                                                                    }
+                                                                </style>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
                                         <div class="col l-5">
                                             @Html.Action("Partial_Item_ThanhToan", "Cart")
                                         </div>
                                     </div>
                                 }
-                                else
-                                {
-                                    <div>
-                                        Bạn chưa có sản phẩm nào. Vui lòng quay lại trang <a href="/Products/getAllProduct">sản phẩm</a> để mua hàng
+                                <div class="col l-6">
+                                    <div class="place-order">
+                                        <div class="woocommerce-terms-and-conditions-wrapper">
+                                            <button type="submit" class="btn-alt">Đặt hàng</button>
+                                        </div>
                                     </div>
-                                }
-
-                            </form>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>

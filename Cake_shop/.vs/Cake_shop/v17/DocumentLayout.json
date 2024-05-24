@@ -1,7 +1,36 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\TMTD-2\\Cake_shop\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{742BA2AA-B3FD-43F5-AC22-7C96A6FB9A52}|Cake_shop\\Cake_shop.csproj|D:\\TMTD-2\\Cake_shop\\cake_shop\\areas\\admin\\views\\order\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{742BA2AA-B3FD-43F5-AC22-7C96A6FB9A52}|Cake_shop\\Cake_shop.csproj|solutionrelative:cake_shop\\areas\\admin\\views\\order\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{742BA2AA-B3FD-43F5-AC22-7C96A6FB9A52}|Cake_shop\\Cake_shop.csproj|D:\\TMTD-2\\Cake_shop\\cake_shop\\areas\\admin\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{742BA2AA-B3FD-43F5-AC22-7C96A6FB9A52}|Cake_shop\\Cake_shop.csproj|solutionrelative:cake_shop\\areas\\admin\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{742BA2AA-B3FD-43F5-AC22-7C96A6FB9A52}|Cake_shop\\Cake_shop.csproj|D:\\TMTD-2\\Cake_shop\\cake_shop\\models\\ef\\ordersdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{742BA2AA-B3FD-43F5-AC22-7C96A6FB9A52}|Cake_shop\\Cake_shop.csproj|solutionrelative:cake_shop\\models\\ef\\ordersdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{742BA2AA-B3FD-43F5-AC22-7C96A6FB9A52}|Cake_shop\\Cake_shop.csproj|D:\\TMTD-2\\Cake_shop\\cake_shop\\areas\\admin\\views\\order\\views.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{742BA2AA-B3FD-43F5-AC22-7C96A6FB9A52}|Cake_shop\\Cake_shop.csproj|solutionrelative:cake_shop\\areas\\admin\\views\\order\\views.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{742BA2AA-B3FD-43F5-AC22-7C96A6FB9A52}|Cake_shop\\Cake_shop.csproj|D:\\TMTD-2\\Cake_shop\\cake_shop\\views\\cart\\checkoutsuccess.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{742BA2AA-B3FD-43F5-AC22-7C96A6FB9A52}|Cake_shop\\Cake_shop.csproj|solutionrelative:cake_shop\\views\\cart\\checkoutsuccess.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{742BA2AA-B3FD-43F5-AC22-7C96A6FB9A52}|Cake_shop\\Cake_shop.csproj|D:\\TMTD-2\\Cake_shop\\cake_shop\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{742BA2AA-B3FD-43F5-AC22-7C96A6FB9A52}|Cake_shop\\Cake_shop.csproj|solutionrelative:cake_shop\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{742BA2AA-B3FD-43F5-AC22-7C96A6FB9A52}|Cake_shop\\Cake_shop.csproj|D:\\TMTD-2\\Cake_shop\\cake_shop\\models\\ef\\cakeshopdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{742BA2AA-B3FD-43F5-AC22-7C96A6FB9A52}|Cake_shop\\Cake_shop.csproj|solutionrelative:cake_shop\\models\\ef\\cakeshopdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +38,102 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CakeShopDB.cs",
+              "DocumentMoniker": "D:\\TMTD-2\\Cake_shop\\Cake_shop\\Models\\EF\\CakeShopDB.cs",
+              "RelativeDocumentMoniker": "Cake_shop\\Models\\EF\\CakeShopDB.cs",
+              "ToolTip": "D:\\TMTD-2\\Cake_shop\\Cake_shop\\Models\\EF\\CakeShopDB.cs",
+              "RelativeToolTip": "Cake_shop\\Models\\EF\\CakeShopDB.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T06:14:49.07Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OrdersDetails.cs",
+              "DocumentMoniker": "D:\\TMTD-2\\Cake_shop\\Cake_shop\\Models\\EF\\OrdersDetails.cs",
+              "RelativeDocumentMoniker": "Cake_shop\\Models\\EF\\OrdersDetails.cs",
+              "ToolTip": "D:\\TMTD-2\\Cake_shop\\Cake_shop\\Models\\EF\\OrdersDetails.cs",
+              "RelativeToolTip": "Cake_shop\\Models\\EF\\OrdersDetails.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAAYwBYAAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T06:14:34.05Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CartController.cs",
+              "DocumentMoniker": "D:\\TMTD-2\\Cake_shop\\Cake_shop\\Controllers\\CartController.cs",
+              "RelativeDocumentMoniker": "Cake_shop\\Controllers\\CartController.cs",
+              "ToolTip": "D:\\TMTD-2\\Cake_shop\\Cake_shop\\Controllers\\CartController.cs",
+              "RelativeToolTip": "Cake_shop\\Controllers\\CartController.cs",
+              "ViewState": "AQIAAFMAAAAAAAAAAAAvwGkAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T05:38:10.846Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CheckOutSuccess.cshtml",
+              "DocumentMoniker": "D:\\TMTD-2\\Cake_shop\\Cake_shop\\Views\\Cart\\CheckOutSuccess.cshtml",
+              "RelativeDocumentMoniker": "Cake_shop\\Views\\Cart\\CheckOutSuccess.cshtml",
+              "ToolTip": "D:\\TMTD-2\\Cake_shop\\Cake_shop\\Views\\Cart\\CheckOutSuccess.cshtml",
+              "RelativeToolTip": "Cake_shop\\Views\\Cart\\CheckOutSuccess.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGcAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-21T05:30:15.724Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Views.cshtml",
+              "DocumentMoniker": "D:\\TMTD-2\\Cake_shop\\Cake_shop\\Areas\\Admin\\Views\\Order\\Views.cshtml",
+              "RelativeDocumentMoniker": "Cake_shop\\Areas\\Admin\\Views\\Order\\Views.cshtml",
+              "ToolTip": "D:\\TMTD-2\\Cake_shop\\Cake_shop\\Areas\\Admin\\Views\\Order\\Views.cshtml",
+              "RelativeToolTip": "Cake_shop\\Areas\\Admin\\Views\\Order\\Views.cshtml",
+              "ViewState": "AQIAAFcAAAAAAAAAAAAAAG0AAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-20T14:51:05.565Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\TMTD-2\\Cake_shop\\Cake_shop\\Areas\\Admin\\Views\\Order\\Index.cshtml",
+              "RelativeDocumentMoniker": "Cake_shop\\Areas\\Admin\\Views\\Order\\Index.cshtml",
+              "ToolTip": "D:\\TMTD-2\\Cake_shop\\Cake_shop\\Areas\\Admin\\Views\\Order\\Index.cshtml",
+              "RelativeToolTip": "Cake_shop\\Areas\\Admin\\Views\\Order\\Index.cshtml",
+              "ViewState": "AQIAAH4AAAAAAAAAAADgv10AAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-20T14:27:05.279Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "D:\\TMTD-2\\Cake_shop\\Cake_shop\\Areas\\Admin\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "Cake_shop\\Areas\\Admin\\Controllers\\OrderController.cs",
+              "ToolTip": "D:\\TMTD-2\\Cake_shop\\Cake_shop\\Areas\\Admin\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "Cake_shop\\Areas\\Admin\\Controllers\\OrderController.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAAAAwCoAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-20T14:26:45.173Z",
+              "EditorCaption": ""
             }
           ]
         }

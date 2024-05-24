@@ -142,6 +142,7 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenuController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsImageController.cs" />
@@ -185,6 +186,7 @@
     <Compile Include="Models\EF\Menu.cs" />
     <Compile Include="Models\EF\NewsModel.cs" />
     <Compile Include="Models\EF\OdersModel.cs" />
+    <Compile Include="Models\EF\OrderDetailsViewModel.cs" />
     <Compile Include="Models\EF\OrdersDetails.cs" />
     <Compile Include="Models\EF\Post.cs" />
     <Compile Include="Models\EF\ProductCategory.cs" />
@@ -6183,6 +6185,9 @@
     <Content Include="Areas\Admin\Views\Home\DangKy.cshtml" />
     <Content Include="Areas\Admin\Views\ProductsImage\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_LayoutEmpty.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Views.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Partial_SanPham.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

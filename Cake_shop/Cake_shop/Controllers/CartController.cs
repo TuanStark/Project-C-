@@ -62,48 +62,60 @@ namespace Cake_shop.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CheckOut(OrderViewModel req)
         {
-            var response = new { Success = false, Code = -1, Message = "Invalid data" };
+            var response = new { Success = false, Code = -1};
 
             if (ModelState.IsValid)
             {
                 ShoppingCart cart = (ShoppingCart)Session["Cart"];
                 if (cart != null && cart.Items.Any())
                 {
-                    OdersModel order = new OdersModel
+                    var productIds = cart.Items.Select(x => x.ProductId).ToList();
+                    var validProductIds = _db.Products.Where(p => productIds.Contains(p.id)).Select(p => p.id).ToList();
+                    OdersModel order = new OdersModel();
+                    order.fullName = req.CustomerName;
+                    order.phone = req.Phone;
+                    order.email = req.Email;
+                    order.address = req.Address;
+                    order.Users_id = GetCurrentUserId();
+                    order.order_date = DateTime.Now;
+                    order.status = 1;
+                    order.total_money = (float)cart.Items.Sum(x => (x.Quantity * x.Price));
+                    var orderID = order.id;
+                    cart.Items.ForEach(x => order.ordersDetails.Add(new OrdersDetails
                     {
-                        fullName = req.CustomerName,
-                        phone = req.Phone,
-                        address = req.Address,
-                        email = req.Email,
-                        order_date = DateTime.Now,
-                        total_money = (float)cart.Items.Sum(x => (x.Price * x.Quantity)),
-                        payment_methods = req.payment_method,
-                        status = 1,
-                        note = $"DH{new Random().Next(1000, 9999)}"
-                    };
-
-                    foreach (var item in cart.Items)
-                    {
-                        var orderDetail = new OrdersDetails
-                        {
-                            ProductId = item.ProductId,
-                            quantity = item.Quantity,
-                            price = (double)item.Price
-                        };
-                        order.ordersDetails.Add(orderDetail);
-                    }
-
+                    Oders_id = orderID,
+                        
+                        ProductId = x.ProductId,
+                        quantity = x.Quantity,
+                        price = (double)x.Price,
+                        total_money = order.total_money
+                    }));                   
+                    order.payment_methods = req.payment_method;
+                    order.createDate = DateTime.Now;
+                    order.createBy = req.CustomerName;
+                    Random rd = new Random();
+                    order.note = "DH" + rd.Next(0, 9) + rd.Next(0, 9) + rd.Next(0, 9) + rd.Next(0, 9);
+                   
                     _db.Orsers.Add(order);
                     _db.SaveChanges();
                    cart.clearCart();
                     return RedirectToAction("CheckOutSuccess");
                 }
-                else
-                {
-                    response = new { Success = false, Code = -2, Message = "Cart is empty" };
-                }
             }
             return Json(response);
+        }
+        private long GetCurrentUserId()
+        {
+            if (Session["userID"] != null)
+            {
+                return (long)Session["userID"];
+            }
+            return -1;
+            /*else
+            {
+                Response.Redirect("DangNhap","Home");
+                return -1;
+            }*/
         }
         public ActionResult CheckOutSuccess()
         {

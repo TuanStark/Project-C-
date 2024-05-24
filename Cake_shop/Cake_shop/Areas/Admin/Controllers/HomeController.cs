@@ -35,12 +35,11 @@ namespace Cake_shop.Areas.Admin.Controllers
         public ActionResult DangNhap(string user, string password)
         {
             var userFromDb = _db.Users.FirstOrDefault(u => u.password.Equals(password) && u.fullname.Equals(user));
-            var admin = _db.Amdins.FirstOrDefault(u => u.password.Equals(password) && u.username.Equals(user));
-                if (admin != null && admin.Roles_id == 1)
+                if (userFromDb != null && userFromDb.Roles_id == 1)
                 {
                 Session["user"] = "admin";
-                Session["userID"] = admin.id;
-                Session["userName"] = admin.username;
+                Session["userID"] = userFromDb.id;
+                Session["userName"] = userFromDb.fullname;
                 return RedirectToAction("Index");
                 }
                 else if(userFromDb != null && userFromDb.Roles_id == 2)
